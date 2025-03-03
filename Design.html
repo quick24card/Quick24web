@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/x-icon.png" type="image/x-icon">
+    <title>Quick Card Design</title>
+    <!-- css -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/small.css">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+</head>
+<body>
+    <!-- navigation bar -->
+    <nav>
+        <div class="row">
+            <div class="nav-content">
+                <button class="three-desh-btn" popovertarget="side-menu"><i class="fa-duotone fa-regular fa-bars"></i></button>
+                <ul id="side-menu" popover>
+                    <div class="close-side-bar-box">
+                        <button class="three-desh-btn three-desh-btn-close" popovertarget="side-menu" popovertargetactive="hide"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <li class="menu-item"><a href="index.html">Home</a></li>
+                    <li class="menu-item dropdown">
+                        <a class="dropdown-link">Products <i style="rotate: -90deg;" class="fa-duotone fa-regular fa-angle-down"></i></a>
+                        <ul class="dropdown-menu dropdown-side-menu">
+                            <li><a href="pvc white material quick card without NFC feature.html">PVC Card without "NFC"</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item"><a href="aboutUs.html">About us</a></li>
+                    <li class="menu-item"><a href="contactUs.html">Contact us</a></li>
+                </ul>
+                <div class="logo">
+                    <a href="index.html"><img src="assets/images/logo.png" alt="Quick"></a>
+                </div>
+                <ul class="menu">
+                    <li class="menu-item"><a href="index.html">Home</a></li>
+                    <li class="menu-item dropdown">
+                        <a class="dropdown-link">Products <i class="fa-duotone fa-regular fa-angle-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="pvc white material quick card without NFC feature.html">PVC Card without "NFC"</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item"><a href="aboutUs.html">About us</a></li>
+                    <li class="menu-item"><a href="contactUs.html">Contact us</a></li>
+                </ul>
+                <div class="orders">
+                    <a href="orderStatus.html">
+                        <i class="fa-light fa-bag-shopping hide"></i>
+                        <i class="fa-solid fa-bag-shopping show"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- loading -->
+    <div class="row loading-animation-box">
+        <div class="loading-animation">
+            <div class="spinner"><i class="fa-light fa-loader"></i></div>
+            <div class="load-confarm loading-icon"><i class="fa-regular fa-circle-check"></i></div>
+            <div class="load-error loading-icon"><i class="fa-regular fa-circle-xmark"></i></div>
+            <p class="loading-status">Loading, please wait...</p>
+            <div class="load-action-btn" style="display: none;">
+                <a class="bthp" href="index.html">ok</a>
+            </div>
+        </div>
+    </div>
+    <!-- login system -->
+    <section class="logIn" id="logIn">
+        <div class="row">
+            <!-- Logo Section -->
+            <div class="quick-logo">
+                <img src="assets/images/logo-white.png" alt="Quick">
+            </div>
+    
+            <!-- Log In Section -->
+            <div class="reg-box">
+                <h3>Log In</h3>
+                <input type="email" id="email" placeholder="Email Address" required>
+                <div class="password-container">
+                    <input type="password" id="password" placeholder="New Password" required>
+                    <button type="button" id="toggle-password">Show</button>
+                </div>
+                <p class="error-msg" style="display: none;">Invalid email or password!</p>
+                <button class="logIn-btn">Log In</button>
+                <div class="anw-box">
+                    <a href="index.html">Create new account</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Design section -->
+    <section class="design-section" style="display: none;">
+        <form name="submit-to-google-sheet">
+            <div class="row">
+                <h3 class="card-design-alert-msg">Your order has been confirmed, now you can design the card if you want.</h3>
+                <div class="ac-box">
+                    <p class="ac-title">account</p>
+                    <div class="ac-data-box">
+                        <textarea class="ac-det-data dynamicTextarea" id="UserId" rows="1" name="UserId" style="display: none;" readonly></textarea>
+                        <textarea class="ac-det-data dynamicTextarea" id="Id" rows="1" name="Id" style="display: none;" readonly></textarea>
+                        <div class="ac-del-data-flex">
+                            <label>name :</label>
+                            <textarea class="ac-det-data dynamicTextarea" id="Name" rows="1" name="Name" readonly></textarea>
+                        </div>
+                        <div class="ac-del-data-flex">
+                            <label>Email :</label>
+                            <textarea class="ac-det-data dynamicTextarea" id="Email" rows="1" name="Email" readonly></textarea>
+                        </div>
+                        <textarea class="ac-det-data dynamicTextarea" id="Password" rows="1" name="Password" style="display: none;" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card-design-preview" id="main-preview">
+                    <!--card design preview front-->
+                    <div class="front card-theme">
+                        <div class="svg-box"></div>
+                        <div class="wire-design-box" style="display: none;">
+                            <img src="assets/images/cardcoperwiredesign.png" alt="">
+                        </div>
+                        <div class="ctn" id="display-ctn" style="top: 2rem;"></div>
+                        <div class="ctp" style="top: 4.5rem;">
+                            <div class="ctp-1" id="display-ctp-one"></div>
+                            <div class="ctp-2" id="display-ctp-tow"></div>
+                            <div class="ctp-2" id="display-ctp-three"></div>
+                        </div>
+                        <div class="ctph" id="display-ctphOne" style="bottom: 6rem;"></div>
+                        <div class="ctph" id="display-ctphTow" style="bottom: 8rem;"></div>
+                        <div class="ctem" id="display-ctem" style="bottom: 4rem;"></div>
+                        <div class="ctad" id="display-ctad" style="bottom: 2rem;"></div>
+                    </div>
+                    <p class="preview">preview</p>
+                    <!--card design preview back-->
+                </div>
+            </div>
+            <div class="row card-design-form">
+                <!--card front side form -->
+                <div class="front-form">
+                    <h4>Front side</h4>
+                    <!--enter name -->
+                    <div class="card-title-name cdfInput-area">
+                        <div class="cdfInput">
+                            <label>Your name & company name <sup>*</sup></label>
+                            <textarea name="ctName" rows="1" id="ctName" placeholder="enter your name" required></textarea>
+                        </div>
+                        <div class="ctn-setting">
+                            <button type="button" class="setting-btn"><i class="fa-light fa-gear"></i></button>
+                            <div class="setting-box">
+                                <h4>settings</h4>
+                                <div class="settings-menu">
+                                    <p class="setting-title">position</p>
+                                    <div class="sm-box">
+                                        <div class="sm-col">
+                                            <input type="radio" id="top-left-n" name="card-name-position" checked>
+                                            <label for="top-left-n">top left</label>
+
+                                            <input type="radio" id="top-right-n" name="card-name-position">
+                                            <label for="top-right-n">top right</label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- enter Profession -->
+                    <div class="card-title-profession cdfInput-area">
+                        <div class="cdfInput">
+                            <label>Profession</label>
+                            <textarea name="ctProfessionOne" rows="1" id="ctProfessionOne" placeholder="your profession (1)" ></textarea>
+                            <textarea name="ctProfessionTow" rows="1" id="ctProfessionTow" placeholder="your profession (2)"  style="display: none;"></textarea>
+                            <textarea name="ctProfessionThree" rows="1" id="ctProfessionThree" placeholder="your profession (3)"  style="display: none;"></textarea>
+                            <div class="add-profession-input-box">
+                                <button type="button" class="add-input" id="add-profession-input"><i class="fa-solid fa-plus"></i></button>
+                                <div class="line"></div>
+                                <button type="button" class="delete-input" id="delete-profession-input"><i class="fa-solid fa-minus"></i></i></button>
+                            </div>
+                        </div>
+                        <div class="ctn-setting">
+                            <button type="button" class="setting-btn"><i class="fa-light fa-gear"></i></button>
+                            <div class="setting-box">
+                                <h4>settings</h4>
+                                <div class="settings-menu">
+                                    <p class="setting-title">position</p>
+                                    <div class="sm-box">
+                                        <div class="sm-col">
+                                            <input type="radio" id="top-left-p" name="card-profession-position" checked>
+                                            <label for="top-left-p">top left</label>
+
+                                            <input type="radio" id="top-right-p" name="card-profession-position">
+                                            <label for="top-right-p">top right</label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--enter phone number -->
+                    <div class="card-title-name cdfInput-area">
+                        <div class="cdfInput">
+                            <label>Phone number</label>
+                            <textarea name="ctPhOne" rows="1" id="ctphOne" class="phoneNumber" placeholder="enter your phone number (1)"></textarea>
+                            <textarea name="ctPhTow" rows="1" id="ctphTow" class="phoneNumber" placeholder="enter your phone number (2)" style="display: none;"></textarea>
+                            <div class="add-profession-input-box">
+                                <button type="button" class="add-input" id="add-phone-number-input"><i class="fa-solid fa-plus"></i></button>
+                                <div class="line"></div>
+                                <button type="button" class="delete-input" id="delete-phone-number-input"><i class="fa-solid fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="ctn-setting">
+                            <button type="button" class="setting-btn"><i class="fa-light fa-gear"></i></button>
+                            <div class="setting-box">
+                                <h4>settings</h4>
+                                <div class="settings-menu">
+                                    <p class="setting-title">position</p>
+                                    <div class="sm-box">
+                                        <div class="sm-col">
+                                            <input type="radio" id="top-left-pn" name="card-phone-position" checked>
+                                            <label for="top-left-pn">top left</label>
+
+                                            <input type="radio" id="top-right-pn" name="card-phone-position">
+                                            <label for="top-right-pn">top right</label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--enter email address -->
+                    <div class="card-title-name cdfInput-area">
+                        <div class="cdfInput">
+                            <label>Email address</label>
+                            <textarea name="ctEmail" rows="1" id="ctEmail" placeholder="enter your e-mail address"></textarea>
+                        </div>
+                        <div class="ctn-setting">
+                            <button type="button" class="setting-btn"><i class="fa-light fa-gear"></i></button>
+                            <div class="setting-box">
+                                <h4>settings</h4>
+                                <div class="settings-menu">
+                                    <p class="setting-title">position</p>
+                                    <div class="sm-box">
+                                        <div class="sm-col">
+                                            <input type="radio" id="top-left-em" name="card-email-position" checked>
+                                            <label for="top-left-em">top left</label>
+
+                                            <input type="radio" id="top-right-em" name="card-email-position">
+                                            <label for="top-right-em">top right</label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--enter address -->
+                    <div class="card-title-name cdfInput-area">
+                        <div class="cdfInput">
+                            <label>Address</label>
+                            <textarea name="ctAddress" rows="1" id="ctAddress" placeholder="enter your address"></textarea>
+                        </div>
+                        <div class="ctn-setting">
+                            <button type="button" class="setting-btn"><i class="fa-light fa-gear"></i></button>
+                            <div class="setting-box">
+                                <h4>settings</h4>
+                                <div class="settings-menu">
+                                    <p class="setting-title">position</p>
+                                    <div class="sm-box">
+                                        <div class="sm-col">
+                                            <input type="radio" id="top-left-ad" name="card-address-position" checked>
+                                            <label for="top-left-ad">top left</label>
+
+                                            <input type="radio" id="top-right-ad" name="card-address-position">
+                                            <label for="top-right-ad">top right</label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- background -->
+                <div class="background-theme">
+                    <h4>Background</h4>
+                    <div class="cdfInput">
+                        <label>Select design</label>
+                        <select name="ctThemeDesign" rows="1" id="cttd" required>
+                            <option value="solid">solid design</option>
+                            <option value="wire">wire design</option>
+                        </select>
+                    </div>
+                    <div class="faq-item" style="transform: scale(100%); border-radius: .8rem; margin-top: 1.5rem;">
+                        <button type="button" class="faq-toggle">
+                          <span>1. solid background</span>
+                          <i class="arrow"></i>
+                        </button>
+                        <div class="faq-content" 
+                        style="display: block;
+                                overflow: auto;
+                                scrollbar-color: var(--Secondary-color) transparent;
+                                scrollbar-width: thin;">
+                            <div class="card-color-box">
+                                <!-- card background styles -->
+                                <label for="aaaa" style="background: #ffffff;">
+                                    <input type="radio" name="background" id="aaaa" value="#ffffff" checked>                                                             
+                                    <p class="color" style="color: #333333;"></p>
+                                </label>
+
+                                <label for="bbbb" style="background: #000000;">
+                                    <input type="radio" name="background" id="bbbb" value="#000000">                            
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="cccc" style="background: #808080;">
+                                    <input type="radio" name="background" id="cccc" value="#808080">                            
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="dddd" style="background: #2f4f4f;">
+                                    <input type="radio" name="background" id="dddd" value="#2f4f4f">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="eeee" style="background: #c0c0c0;">
+                                    <input type="radio" name="background" id="eeee" value="#c0c0c0">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="ffff" style="background: #f0f8ff;">
+                                    <input type="radio" name="background" id="ffff" value="#f0f8ff">                             
+                                    <p class="color" style="color: #333333;"></p>
+                                </label>
+
+                                <label for="gggg" style="background: #800000;">
+                                    <input type="radio" name="background" id="gggg" value="#800000">                              
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="hhhh" style="background: #A0522D;">
+                                    <input type="radio" name="background" id="hhhh" value="#A0522D">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="iiii" style="background: #000080;">
+                                    <input type="radio" name="background" id="iiii" value="#000080">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="jjjj" style="background: #1E90FF;">
+                                    <input type="radio" name="background" id="jjjj" value="#1E90FF">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="kkkk" style="background: #87CEEB;">
+                                    <input type="radio" name="background" id="kkkk" value="#87CEEB">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="llll" style="background: #5F9EA0;">
+                                    <input type="radio" name="background" id="llll" value="#5F9EA0">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="mmmm" style="background: #9932CC;">
+                                    <input type="radio" name="background" id="mmmm" value="#9932CC">                            
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="nnnn" style="background: #00FFFF;">
+                                    <input type="radio" name="background" id="nnnn" value="#00FFFF">                           
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="oooo" style="background: #008080;">
+                                    <input type="radio" name="background" id="oooo" value="#008080">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="pppp" style="background: #808000;">
+                                    <input type="radio" name="background" id="pppp" value="#808000">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="qqqq" style="background: #9ACD32;">
+                                    <input type="radio" name="background" id="qqqq" value="#9ACD32">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="rrrr" style="background: #2E8B57;">
+                                    <input type="radio" name="background" id="rrrr" value="#2E8B57">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="ssss" style="background: #32CD32;">
+                                    <input type="radio" name="background" id="ssss" value="#32CD32">                          
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="tttt" style="background: #ADFF2F;">
+                                    <input type="radio" name="background" id="tttt" value="#ADFF2F">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="uuuu" style="background: #7B68EE;">
+                                    <input type="radio" name="background" id="uuuu" value="#7B68EE">                            
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="vvvv" style="background: #6A5ACD;">
+                                    <input type="radio" name="background" id="vvvv" value="#6A5ACD">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="wwww" style="background: #8B008B;">
+                                    <input type="radio" name="background" id="wwww" value="#8B008B">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="xxxx" style="background: #8A2BE2;">
+                                    <input type="radio" name="background" id="xxxx" value="#8A2BE2">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="yyyy" style="background: #8B0000;">
+                                    <input type="radio" name="background" id="yyyy" value="#8B0000">                              
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="zzzz" style="background: #FF8C00;">
+                                    <input type="radio" name="background" id="zzzz" value="#FF8C00">                              
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item" style="transform: scale(100%); border-radius: .8rem;">
+                        <button type="button" class="faq-toggle">
+                          <span>2. gradient background</span>
+                          <i class="arrow"></i>
+                        </button>
+                        <div class="faq-content" 
+                            style="overflow: auto;
+                                    scrollbar-color: var(--Secondary-color) transparent;
+                                    scrollbar-width: thin;">
+                            <div class="card-color-box">
+                                <!-- card background styles -->
+                                <label for="aaa" style="background: linear-gradient(100deg, #000000 0%, #ff0000 100%)">
+                                    <input type="radio" name="background" id="aaa" value="black and red">                                                              
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="bbb" style="background: linear-gradient(100deg, #4E65FF 0%, #92EFFD 100%)">
+                                    <input type="radio" name="background" id="bbb" value="Orbit">                            
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="ccc" style="background: linear-gradient(100deg, #C33764 0%, #1D2671 100%)">
+                                    <input type="radio" name="background" id="ccc" value="Celestial">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="ddd" style="background: linear-gradient(100deg, #93A5CF 0%, #E4EfE9 100%)">
+                                    <input type="radio" name="background" id="ddd" value="Clean Mirror">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="eee" style="background: linear-gradient(100deg, #868F96 0%, #596164 100%)">
+                                    <input type="radio" name="background" id="eee" value="Mountain Rock">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="fff" style="background: linear-gradient(100deg, #09203F 0%, #537895 100%)">
+                                    <input type="radio" name="background" id="fff" value="Eternal Constance">                             
+                                    <p class="color" style="color: #333333;"></p>
+                                </label>
+
+                                <label for="ggg" style="background: linear-gradient(100deg, #FFECD2 0%, #FCB69F 100%)">
+                                    <input type="radio" name="background" id="ggg" value="Juicy Peach">                              
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="hhh" style="background: linear-gradient(100deg, #764BA2 0%, #667EEA 100%)">
+                                    <input type="radio" name="background" id="hhh" value="Plum Plate">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="iii" style="background: linear-gradient(100deg, #FDFCFB 0%, #E2D1C3 100%)">
+                                    <input type="radio" name="background" id="iii" value="Everlasting SKy">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="jjj" style="background: linear-gradient(100deg, #4E65FF 0%, #92EFFD 100%)">
+                                    <input type="radio" name="background" id="jjj" value="Orbit">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="kkk" style="background: linear-gradient(100deg, #141e30 0%, #243b55 100%)">
+                                    <input type="radio" name="background" id="kkk" value="Royal">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="lll" style="background: linear-gradient(100deg, #2b5876 0%, #4e4376 100%)">
+                                    <input type="radio" name="background" id="lll" value="Sea Blue">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="mmm" style="background: linear-gradient(100deg, #aa076b 0%, #61045f 100%)">
+                                    <input type="radio" name="background" id="mmm" value="Aubergine">                            
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="nnn" style="background: linear-gradient(100deg, #7e2426 0%, #e3bde5 100%)">
+                                    <input type="radio" name="background" id="nnn" value="">                           
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="ooo" style="background: linear-gradient(100deg, #870000 0%, #190A05 100%)">
+                                    <input type="radio" name="background" id="ooo" value="the strain">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="ppp" style="background: linear-gradient(100deg, #E6DADA 0%, #274046 100%)">
+                                    <input type="radio" name="background" id="ppp" value="winter">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="qqq" style="background: linear-gradient(100deg, #000000 0%, #ff0000 100%)">
+                                    <input type="radio" name="background" id="qqq" value="#9ACD32">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="rrr" style="background: linear-gradient(100deg, #616161 0%, #9bc5c3 100%)">
+                                    <input type="radio" name="background" id="rrr" value="moor">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="sss" style="background: linear-gradient(100deg, #4b6cb7 0%, #182848 100%)">
+                                    <input type="radio" name="background" id="sss" value="pinot nori">                          
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="ttt" style="background: linear-gradient(100deg, #FC354C 0%, #0ABFBC 100%)">
+                                    <input type="radio" name="background" id="ttt" value="miaka">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="uuu" style="background: linear-gradient(100deg, #414d0b 0%, #727a17 100%)">
+                                    <input type="radio" name="background" id="uuu" value="army">                            
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="vvv" style="background: linear-gradient(100deg, #ECE9E6 0%, #FFFFFF 100%)">
+                                    <input type="radio" name="background" id="vvv" value="clouds">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="www" style="background: linear-gradient(100deg, #DC2424 0%, #4A569D 100%)">
+                                    <input type="radio" name="background" id="www" value="dracula">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="xxx" style="background: linear-gradient(100deg, #24C6DC 0%, #514A9D 100%)">
+                                    <input type="radio" name="background" id="xxx" value="mantle">                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="yyy" style="background: linear-gradient(100deg, #283048 0%, #859398 100%)">
+                                    <input type="radio" name="background" id="yyy" value="titanium">                              
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="zzz" style="background: linear-gradient(100deg, #232526 0%, #414345 100%)">
+                                    <input type="radio" name="background" id="zzz" value="midnight city">                              
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item" style="transform: scale(100%); border-radius: .8rem;">
+                        <button type="button" class="faq-toggle">
+                          <span>3. custom background</span>
+                          <i class="arrow"></i>
+                        </button>
+                        <div class="faq-content"
+                            style="overflow: auto;
+                                    scrollbar-color: var(--Secondary-color) transparent;
+                                    scrollbar-width: thin;">
+                            <div class="card-color-box">
+                                <!-- card background styles -->
+                                <label for="a">
+                                    <input type="radio" name="background" id="a" value="01" >
+                                    <img src="assets/images/cardsvg/01.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="b">
+                                    <input type="radio" name="background" id="b" value="02">
+                                    <img src="assets/images/cardsvg/02.png" alt="card">                              
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="c">
+                                    <input type="radio" name="background" id="c" value="03">
+                                    <img src="assets/images/cardsvg/03.png" alt="card">
+                                    <p class="color" style="color: #FFFFFF;"></p>
+                                </label>
+            
+                                <label for="d">
+                                    <input type="radio" name="background" id="d" value="04">
+                                    <img src="assets/images/cardsvg/04.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="e">
+                                    <input type="radio" name="background" id="e" value="05">
+                                    <img src="assets/images/cardsvg/05.png" alt="card">                              
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="f">
+                                    <input type="radio" name="background" id="f" value="06">
+                                    <img src="assets/images/cardsvg/06.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="g">
+                                    <input type="radio" name="background" id="g" value="07">
+                                    <img src="assets/images/cardsvg/07.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="h">
+                                    <input type="radio" name="background" id="h" value="08">
+                                    <img src="assets/images/cardsvg/08.png" alt="card">
+                                    <p class="color" style="color: #f6b544;"></p>
+                                </label>
+            
+                                <label for="i">
+                                    <input type="radio" name="background" id="i" value="09">
+                                    <img src="assets/images/cardsvg/09.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="j">
+                                    <input type="radio" name="background" id="j" value="10">
+                                    <img src="assets/images/cardsvg/10.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="k">
+                                    <input type="radio" name="background" id="k" value="11">
+                                    <img src="assets/images/cardsvg/11.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="l">
+                                    <input type="radio" name="background" id="l" value="12">
+                                    <img src="assets/images/cardsvg/12.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="m">
+                                    <input type="radio" name="background" id="m" value="13">
+                                    <img src="assets/images/cardsvg/13.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="n">
+                                    <input type="radio" name="background" id="n" value="14">
+                                    <img src="assets/images/cardsvg/14.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="o">
+                                    <input type="radio" name="background" id="o" value="15">
+                                    <img src="assets/images/cardsvg/15.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="p">
+                                    <input type="radio" name="background" id="p" value="16">
+                                    <img src="assets/images/cardsvg/16.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="q">
+                                    <input type="radio" name="background" id="q" value="17">
+                                    <img src="assets/images/cardsvg/17.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+                                
+                                <label for="r">
+                                    <input type="radio" name="background" id="r" value="18">
+                                    <img src="assets/images/cardsvg/18.png" alt="card">
+                                    <p class="color" style="color: #00ffb7;"></p>
+                                </label>
+            
+                                <label for="s">
+                                    <input type="radio" name="background" id="s" value="19">
+                                    <img src="assets/images/cardsvg/19.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="t">
+                                    <input type="radio" name="background" id="t" value="20">
+                                    <img src="assets/images/cardsvg/20.png" alt="card">
+                                    <p class="color" style="color: #000000;"></p>
+                                </label>
+            
+                                <label for="u">
+                                    <input type="radio" name="background" id="u" value="21">
+                                    <img src="assets/images/cardsvg/21.png" alt="card">                                                                             
+                                    <p class="color" style="color: #000000;"></p>
+                                </label>
+            
+                                <label for="v">
+                                    <input type="radio" name="background" id="v" value="22">
+                                    <img src="assets/images/cardsvg/22.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="w">
+                                    <input type="radio" name="background" id="w" value="23">
+                                    <img src="assets/images/cardsvg/23.png" alt="card">                                                                                                                                                                               
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+            
+                                <label for="x">
+                                    <input type="radio" name="background" id="x" value="24">
+                                    <img src="assets/images/cardsvg/24.png" alt="card">                                                                                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+                                <label for="y">
+                                    <input type="radio" name="background" id="y" value="25">
+                                    <img src="assets/images/cardsvg/25.png" alt="card">
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="z">
+                                    <input type="radio" name="background" id="z" value="26">
+                                    <img src="assets/images/cardsvg/26.png" alt="card">                      
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+
+                                <label for="aa">
+                                    <input type="radio" name="background" id="aa" value="27">
+                                    <img src="assets/images/cardsvg/27.png" alt="card">                                                     
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="bb">
+                                    <input type="radio" name="background" id="bb" value="28">
+                                    <img src="assets/images/cardsvg/28.png" alt="card">                                                     
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="cc">
+                                    <input type="radio" name="background" id="cc" value="29">
+                                    <img src="assets/images/cardsvg/29.png" alt="card">                                                   
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="dd">
+                                    <input type="radio" name="background" id="dd" value="30">
+                                    <img src="assets/images/cardsvg/30.png" alt="card">                                           
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="ee">
+                                    <input type="radio" name="background" id="ee" value="31">
+                                    <img src="assets/images/cardsvg/31.png" alt="card">                                 
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="ff">
+                                    <input type="radio" name="background" id="ff" value="32">
+                                    <img src="assets/images/cardsvg/32.png" alt="card">                                   
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="gg">
+                                    <input type="radio" name="background" id="gg" value="33">
+                                    <img src="assets/images/cardsvg/33.png" alt="card">                                          
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="hh">
+                                    <input type="radio" name="background" id="hh" value="34">
+                                    <img src="assets/images/cardsvg/34.png" alt="card">                                               
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="ii">
+                                    <input type="radio" name="background" id="ii" value="35">
+                                    <img src="assets/images/cardsvg/35.png" alt="card">                                             
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="jj">
+                                    <input type="radio" name="background" id="jj" value="36">
+                                    <img src="assets/images/cardsvg/36.png" alt="card">                                           
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="kk">
+                                    <input type="radio" name="background" id="kk" value="37">
+                                    <img src="assets/images/cardsvg/37.png" alt="card">                                          
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="ll">
+                                    <input type="radio" name="background" id="ll" value="38">
+                                    <img src="assets/images/cardsvg/38.png" alt="card">                                                                                                          
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="mm">
+                                    <input type="radio" name="background" id="mm" value="39">
+                                    <img src="assets/images/cardsvg/39.png" alt="card">              
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+        
+                                <label for="nn">
+                                    <input type="radio" name="background" id="nn" value="40">
+                                    <img src="assets/images/cardsvg/40.png" alt="card">                                                                                                     
+                                    <p class="color" style="color: #ffffff;"></p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- send button -->
+                    <div class="from-btn-box">
+                        <button type="reset" class="btn refresh-btn">refresh</button>
+                        <button type="button" id="next" class="btn next-btn">next</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Design Summary -->
+            <div class="row design-summary" style="display: none;">
+                <div class="subRow">
+                    <div class="card-design-preview">
+                        <!--card design preview front-->
+                        <div class="front card-theme card-summary">
+                            <div class="svg-box-one"></div>
+                            <div class="wire-design-box" style="display: none;">
+                                <img src="assets/images/cardcoperwiredesign.png" alt="">
+                            </div>
+                            <div class="ctn" id="display-ctn-one" style="top: 2rem;"></div>
+                            <div class="ctp" style="top: 4.5rem;">
+                                <div class="ctp-1" id="display-ctp-one-one"></div>
+                                <div class="ctp-2" id="display-ctp-tow-tow"></div>
+                                <div class="ctp-2" id="display-ctp-three-three"></div>
+                            </div>
+                            <div class="ctph" id="display-ctphOne-one" style="bottom: 6rem;"></div>
+                            <div class="ctph" id="display-ctphTow-tow" style="bottom: 8rem;"></div>
+                            <div class="ctem" id="display-ctem-one" style="bottom: 4rem;"></div>
+                            <div class="ctad" id="display-ctad-one" style="bottom: 2rem;"></div>
+                        </div>
+                    </div>
+                    <div class="condition">
+                        <input id="correct" type="checkbox" required>
+                        <label for="correct">Hey, I confirm that all the information is correct.</label>
+                    </div>
+
+                    <div class="from-btn-box design-summary-btn-box">
+                        <button type="button" id="back" class="btn next-btn">back</button>
+                        <button type="submit" class="btn confirm-btn" style="border: none;">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+    <!-- footer section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Quick Digital Business Card</h4>
+                <p>Transform your business connections with smart digital solutions.</p>
+            </div>
+            <div class="footer-section">
+                <h4>products</h4>
+                <ul>
+                    <li><a href="pvc white material quick card without NFC feature.html">PVC Card without "NFC"</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutUs.html">About us</a></li>
+                    <li><a href="contactUs.html">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><a href="mailto: ibrahim094islam@gmail.com">ibrahim094islam@gmail.com</a></li>
+                    <li><a href="tel:+8801908111251">+880 1908-111251</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; (2024-25) Quick Digital Business Card. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- script -->
+    <script src="js/Design.js"></script>
+</body>
+</html>
